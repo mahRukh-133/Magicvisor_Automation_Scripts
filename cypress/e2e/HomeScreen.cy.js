@@ -5,7 +5,6 @@ describe('Find the flight', () => {
 
 
 
-      /* ==== Generated with Cypress Studio ==== */
       cy.get('.From--Cards > .rbt > div > .rbt-input-main').click();
       cy.get('#Dropdown1').click();
      // cy.get('#Dropdown1-item-3').click();
@@ -18,5 +17,4 @@ describe('Find the flight', () => {
       cy.get(':nth-child(19) > abbr').click();
       cy.get(':nth-child(33)').click();
       cy.get('.MuiButtonBase-root').click();
-      /* ==== End Cypress Studio ==== */
     })})

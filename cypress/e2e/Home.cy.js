@@ -11,7 +11,6 @@ describe('Find the flight', () => {
       });
     }).as('SearchFlight');
   
-    // Visit the login page
     cy.visit('/')
 
     cy.get('.SearchCard--Wrapper > :nth-child(1) > h3').should('be.visible').click();
