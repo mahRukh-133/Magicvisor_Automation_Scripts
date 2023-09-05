@@ -1,17 +1,12 @@
 describe('Find the flight', () => {
   it('Look for booking', () => {
-    cy.intercept('GET', '/api/flight-confirmation', (req) => {
-      // Simulate a successful login by modifying the response
-      req.reply({
-        statusCode: 200,
-        body: {
-          // Your mock response data here, e.g., a token or user information
-          token: 'your_access_token',
-        },
-      });
-    }).as('SearchFlight');
-  
-    cy.visit('/')
+    cy.intercept('GET', '/api/flight-search?destinationLocationCode=CXR&departureDate=2023-09-14&originLocationCode=AOR&returnDate=2023-09-15&adults=2&infants=0&children=2&oneStop=0&max=70&currencyCode=USD', { delay: 9000 }).as('getData');
+    // Trigger an action that makes a GET request to '/api/data'
+    // Wait for the intercepted request to complete
+   
+   
+    
+    cy.visit('https://www.magicviser.com/')
 
     cy.get('.SearchCard--Wrapper > :nth-child(1) > h3').should('be.visible').click();
     cy.get('.From--Cards > .rbt > div > .rbt-input-main').click();
@@ -44,7 +39,6 @@ describe('Find the flight', () => {
     cy.get('.MuiButtonBase-root').should('have.text', 'Search');
     cy.get('.MuiButtonBase-root').should('be.visible');
     cy.get('.MuiButtonBase-root').click();
-    //cy.wait('@SearchFlight');
-
-  })
+    cy.wait(8000)
+    cy.wait('@getData').its('response.statusCode').should('eq', 200);  })
 })
