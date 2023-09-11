@@ -1,25 +1,25 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// cypress/support/commands.js
+
+Cypress.Commands.add('visitURL', (url) => {
+    cy.visit(url);
+  });
+  
+  // cypress/support/commands.j
+
+Cypress.Commands.add('generateUniqueFirstName', () => {
+    // Sample array of first names (you can replace these with your own data)
+    const firstNames = ["John", "Emma", "Michael", "Sophia", "William"];
+    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    return randomFirstName;
+  });
+  
+  Cypress.Commands.add('generateUniqueLastName', () => {
+    // Sample array of last names (you can replace these with your own data)
+    const lastNames = ["Smith", "Johnson", "Brown", "Lee", "Davis"];
+    const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    return randomLastName;
+  });
+  Cypress.Commands.add('checkFileExistence', (filePath) => {
+    cy.readFile(filePath, 'utf-8').should('exist');
+  });
+  
