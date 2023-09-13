@@ -21,13 +21,24 @@ function generateRandomFirstName() {
 
 
 it('Round Trip',()=>{
-  const uniqueFirstName = generateRandomFirstName();
-  const uniqueLastName = cy.generateUniqueLastName();
   const currentDate = new Date();
   const futureDate = new Date(currentDate);
   futureDate.setDate(currentDate.getDate() + 7);
-  
- cy.visit('https://www.magicviser.com/search-flights?originLocationCode=AOR&destinationLocationCode=BMV&departureDate=2023-09-15&returnDate=2023-09-21&adults=1&children=0&infants=0&nonStop=false&max=70&currencyCode=USD&class=Economy&oneway=false&2023-09-21')
+    cy.visit('https://www.magicviser.com/')
+    cy.get('.From--Cards > .rbt > div > .rbt-input-main').click();
+    cy.get('.From--Cards > .rbt > [style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"] > .rbt-input-main').clear();
+    cy.get('.From--Cards > .rbt > [style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"] > .rbt-input-main').type('malay');
+    cy.get('#Dropdown1-item-0').click();
+    cy.get('.SearchCard--Wrapper > :nth-child(2) > .rbt > div > .rbt-input-main').click();
+    cy.get('.SearchCard--Wrapper > :nth-child(2) > .rbt > [style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"] > .rbt-input-main').clear();
+    cy.get('.SearchCard--Wrapper > :nth-child(2) > .rbt > [style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"] > .rbt-input-main').type('vietn');
+    cy.get('#Dropdown1-item-0').click();
+    cy.get(':nth-child(3) > .Departure--Text > h3').click();
+    cy.get(':nth-child(34)').click();
+    cy.get(':nth-child(19) > abbr').click();
+    cy.get('#adults').click();
+    cy.get('.MuiButtonBase-root').click();
+    //cy.url().should('include','/search-flights?originLocationCode=AOR&destinationLocationCode=BMV&departureDate=2023-09-15&returnDate=2023-09-21&adults=1&children=0&infants=0&nonStop=false&max=70&currencyCode=USD&class=Economy&oneway=false&2023-09-21')
  cy.get('.Flight--recomments--active > .Flight--recomment > h3').should('have.text', 'Recommended');
  cy.get(':nth-child(4) > .Flight--recomment > h3').should('have.text', 'Cheapest');
  cy.get(':nth-child(6) > .Flight--recomment > h3').should('have.text', 'Shortest');
@@ -42,9 +53,9 @@ it('Round Trip',()=>{
  cy.url().should('include','/preview?adults=1&children=0&infants=0&numberOfSeats=9&departureDate=undefined&returnDate=undefined')
 
  //Treveller Details
- cy.get('[placeholder="First Name"]').click().type(uniqueFirstName); 
+ cy.get('[placeholder="First Name"]').click().type('Steven'); 
  //Last Name 
- cy.get(':nth-child(3) > :nth-child(3) > #validationCustom01').click().type('JOHNY')
+ cy.get('.contact--details--user > :nth-child(2) > :nth-child(3) > #validationCustom01').click().type('JOHNY')
  // Find the input element by its id and set its value to the current date
 //cy.get('#dateInput').type(new Date().toLocaleDateString());
 cy.get('.mantine-Input-input').eq(0).click().type(new Date().toLocaleDateString())
@@ -54,7 +65,7 @@ cy.get('.mantine-Input-input').eq(2).click()
 cy.contains("Aruba").click()
 
 cy.get('.mantine-Input-input').eq(3).click({force:true}).type(new Date(Date.now() - 31536000000).toLocaleDateString())
-cy.get(':nth-child(6) > :nth-child(4) > #validationCustom01').click().type('4773-761972-05082595')
+cy.get(':nth-child(5) > :nth-child(4) > #validationCustom01').click().type('4773-761972-05082595')
 cy.get('.contact--details > :nth-child(2) > #validationCustom01').click().type('Test@gmail.com')
 cy.get('.contact--details > :nth-child(3) > #validationCustom01').click().type('555-555-1234')
 cy.get('.Stepper--next').click()

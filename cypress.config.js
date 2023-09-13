@@ -1,6 +1,15 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'custom-title',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
   pageLoadTimeout: 40000,
   defaultCommandTimeout: 40000,
 

@@ -1,0 +1,95 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-09-11T13:02:44.471Z",
+    "end": "2023-09-11T13:02:45.218Z",
+    "duration": 747,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "50584cee-e653-42f2-aad4-fc1658118d0d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Round_Trip.cy.js",
+      "file": "cypress\\e2e\\Round_Trip.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "Round Trip",
+          "fullTitle": "Round Trip",
+          "timedOut": null,
+          "duration": 667,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\Round_Trip.cy.js\\\\Round Trip (failed).png\"\n    ]\n  ]\n}",
+          "code": "const currentDate = new Date();\nconst futureDate = new Date(currentDate);\nfutureDate.setDate(currentDate.getDate() + 7);\ncy.visit('https://www.magicviser.com/');\ncy.get('.From--Cards > .rbt > div > .rbt-input-main').click();\ncy.get('.From--Cards > .rbt > [style=\"display: flex; flex: 1 1 0%; height: 100%; position: relative;\"] > .rbt-input-main').clear();\ncy.get('.From--Cards > .rbt > [style=\"display: flex; flex: 1 1 0%; height: 100%; position: relative;\"] > .rbt-input-main').type('malay');\ncy.get('#Dropdown1-item-0').click();\ncy.get('.SearchCard--Wrapper > :nth-child(2) > .rbt > div > .rbt-input-main').click();\ncy.get('.SearchCard--Wrapper > :nth-child(2) > .rbt > [style=\"display: flex; flex: 1 1 0%; height: 100%; position: relative;\"] > .rbt-input-main').clear();\ncy.get('.SearchCard--Wrapper > :nth-child(2) > .rbt > [style=\"display: flex; flex: 1 1 0%; height: 100%; position: relative;\"] > .rbt-input-main').type('vietn');\ncy.get('#Dropdown1-item-0').click();\ncy.get(':nth-child(3) > .Departure--Text > h3').click();\ncy.get(':nth-child(34)').click();\ncy.get(':nth-child(19) > abbr').click();\ncy.get('#adults').click();\ncy.get('.MuiButtonBase-root').click();\n//cy.url().should('include','/search-flights?originLocationCode=AOR&destinationLocationCode=BMV&departureDate=2023-09-15&returnDate=2023-09-21&adults=1&children=0&infants=0&nonStop=false&max=70&currencyCode=USD&class=Economy&oneway=false&2023-09-21')\ncy.get('.Flight--recomments--active > .Flight--recomment > h3').should('have.text', 'Recommended');\ncy.get(':nth-child(4) > .Flight--recomment > h3').should('have.text', 'Cheapest');\ncy.get(':nth-child(6) > .Flight--recomment > h3').should('have.text', 'Shortest');\ncy.get(':nth-child(8) > .Flight--recomment > h3').should('have.text', 'Alternate Dates');\ncy.get(':nth-child(4) > .Flight--recomment > h3').click();\ncy.get(':nth-child(6) > .Flight--recomment > h3').click();\ncy.get(':nth-child(8) > .Flight--recomment').click();\ncy.get(':nth-child(4) > .Flight--recomment > h4').click();\ncy.get(':nth-child(1) > li > .itinerary--parent > .checkout--section > #BuyBtn').should('have.text', 'Buy');\ncy.get(':nth-child(1) > li > .itinerary--parent > .checkout--section > #BuyBtn').should('be.enabled');\ncy.get(':nth-child(1) > li > .itinerary--parent > .checkout--section > #BuyBtn').click();\ncy.url().should('include', '/preview?adults=1&children=0&infants=0&numberOfSeats=9&departureDate=undefined&returnDate=undefined');\n//Treveller Details\ncy.get('[placeholder=\"First Name\"]').click().type(uniqueFirstName);\n//Last Name \ncy.get(':nth-child(3) > :nth-child(3) > #validationCustom01').click().type('JOHNY');\n// Find the input element by its id and set its value to the current date\n//cy.get('#dateInput').type(new Date().toLocaleDateString());\ncy.get('.mantine-Input-input').eq(0).click().type(new Date().toLocaleDateString());\ncy.get('.mantine-Input-input').eq(1).click({\n  force: true\n}).type(futureDate.toLocaleDateString());\n// Find the input element by its placeholder text\ncy.get('.mantine-Input-input').eq(2).click();\ncy.contains(\"Aruba\").click();\ncy.get('.mantine-Input-input').eq(3).click({\n  force: true\n}).type(new Date(Date.now() - 31536000000).toLocaleDateString());\ncy.get(':nth-child(6) > :nth-child(4) > #validationCustom01').click().type('4773-761972-05082595');\ncy.get('.contact--details > :nth-child(2) > #validationCustom01').click().type('Test@gmail.com');\ncy.get('.contact--details > :nth-child(3) > #validationCustom01').click().type('555-555-1234');\ncy.get('.Stepper--next').click();\ncy.get('#agree').click();\ncy.get('.Stepper--next').click();\ncy.url().then(url => {\n  // Create a JSON object with the URL\n  const data = {\n    currentURL: url\n  };\n  // Write the JSON object to a file\n  cy.writeFile('cypress/fixtures/current-url.json', data); // Save the data to a JSON file});\n});\nit('Checkout Page', () => {\n  cy.readFile('cypress/fixtures/current-url.json').then(data => {\n    const currentURL = data.currentURL;\n    // Check if the URL exists\n    if (currentURL) {\n      cy.visit(currentURL); // Visit the stored URL\n    } else {\n      // Handle the case where the URL is not found\n      cy.log('No URL found in JSON file');\n    }\n  });\n});\ncy.get('#email').click().type('testflow832+1@gmail.com');\ncy.get('[data-testid=\"card-tab-button\"]').click();\ncy.get('#cardNumber').click().type('4242 4242 4242 4242');\ncy.get('#cardExpiry').clear('03 / ');\ncy.get('#cardExpiry').type('03 / 33');\ncy.get('#cardCvc').clear('3');\ncy.get('#cardCvc').type('333');\ncy.get('#billingName').clear('T');\ncy.get('#billingName').type('Test');\ncy.get('#enableStripePass').check();\ncy.get('#enableStripePass').uncheck();\ncy.get('.SubmitButton-IconContainer').click();\n// Verify user pay the payment successfully  \ncy.url().should('include', '/confirmation?success=true');\ncy.get('.Stepper--next').click();",
+          "err": {
+            "message": "ReferenceError: uniqueFirstName is not defined",
+            "estack": "ReferenceError: uniqueFirstName is not defined\n    at Context.eval (webpack://magicvisor_automation_scripts/./cypress/e2e/Round_Trip.cy.js:56:51)",
+            "diff": null
+          },
+          "uuid": "4d6279d2-5764-4ab9-8a09-2ddb610d2e51",
+          "parentUUID": "50584cee-e653-42f2-aad4-fc1658118d0d",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [],
+      "failures": [
+        "4d6279d2-5764-4ab9-8a09-2ddb610d2e51"
+      ],
+      "pending": [],
+      "skipped": [],
+      "duration": 667,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

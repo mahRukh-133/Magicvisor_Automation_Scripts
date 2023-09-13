@@ -1,0 +1,91 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-09-11T13:02:30.727Z",
+    "end": "2023-09-11T13:02:41.748Z",
+    "duration": 11021,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8c4eda7b-e606-4b2b-a9a0-a85af5657bd2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Payment.cy.js",
+      "file": "cypress\\e2e\\Payment.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "",
+          "fullTitle": "",
+          "timedOut": null,
+          "duration": 6952,
+          "state": "passed",
+          "speed": "medium",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.visit('https://checkout.stripe.com/c/pay/cs_test_a1WfBZna2eU1LfymZaBluCPYoIijzqJaoKQ7DobXzyThFw0BU8JstauIh3#fidkdWxOYHwnPyd1blpxYHZxWjA0SE5%2FSUtHYDBNbHdHbzdxa3ZcVmZ9SFZdYDBQQ2p2VDBgYmd3Z1FRRkNdSGdqc3JydEtGYU9rSm1Of1ZmVHNLclxUT0ZGajddf3JpM39LfT1IRkp9M2t3NTVGZGdQampRdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl');",
+          "err": {},
+          "uuid": "fa6a70ec-d651-4d5d-bc03-c57a69aff4fe",
+          "parentUUID": "8c4eda7b-e606-4b2b-a9a0-a85af5657bd2",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [
+        "fa6a70ec-d651-4d5d-bc03-c57a69aff4fe"
+      ],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 6952,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
