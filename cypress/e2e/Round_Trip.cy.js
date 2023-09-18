@@ -118,8 +118,8 @@ it('Checkout Page',()=>{
   cy.get('#enableStripePass').uncheck();
   cy.get('.SubmitButton-IconContainer').click();
   // Verify user pay the payment successfully  
-  //cy.url().should('include','/confirmation?success=true')
- // cy.get('.Stepper--next').click()
+  cy.url().should('include','/confirmation?success=true')
+ cy.get('.Stepper--next').click()
 })
 
  
